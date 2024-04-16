@@ -2,11 +2,12 @@ import Model from "../app/base/Model";
 
 export class User extends Model {
 
-    protected table = 'users';
+    table = 'users';
 
     fillable = [];
 
     static boot(data: any) {
+        data.uid = Date.now();
         return data;
     }
 }

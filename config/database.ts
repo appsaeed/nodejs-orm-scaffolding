@@ -9,12 +9,12 @@ const database: Knex.Config = {
      */
     client: env('DB_CONNECTION', 'mysql'),
     connection: {
-        connectionString: env('DATABASE_URL'),
+        // connectionString: env('DATABASE_URL'),
         database: env('DB_DATABASE', 'nodejs_test'),
         user: env('DB_USER', 'root'),
         host: env('DB_HOST', '127.0.0.1'),
         password: env('DB_PASSWORD', ''),
-        port: env('DB_PORT') ? Number(env('DB_PORT')) : undefined,
+        // port: env('DB_PORT') ? Number(env('DB_PORT')) : undefined,
     },
     migrations: {
         directory: 'migrations',
@@ -26,7 +26,6 @@ const database: Knex.Config = {
         directory: 'seeds',
         extension: 'ts',
         loadExtensions: ['ts']
-
     }
 }
 

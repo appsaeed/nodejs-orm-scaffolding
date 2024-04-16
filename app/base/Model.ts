@@ -1,10 +1,7 @@
 import knex from "knex";
 import database from "../../config/database";
 import { filterObject } from "./helpers";
-
-type Fillable<T extends string> = {
-    [key in T]: any
-}
+import { AnyObject } from "./types/types";
 
 export default class Model {
 
@@ -12,13 +9,13 @@ export default class Model {
 
     protected fillable?: string[];
 
-    static boot?: (data: any) => any;
+    protected static boot?: (data: any) => any;
 
     static getTable() {
-        return new this().table || this.name;
+        return new this().table || String(this.name).toLowerCase();
     }
 
-    getFillable() {
+    public getFillable() {
         return this.fillable || [];
     }
 
@@ -26,9 +23,12 @@ export default class Model {
         return knex(database)(this.getTable())
     }
 
-    static insert(data: Array<any> | { key: string, value: any }) {
+    static async insert<T>(data: Array<any> | AnyObject<T>) {
         const _data = this.boot ? this.boot(data) : data;
-        const fillable = filterObject(_data, (new this().getFillable()));
-        return this.query().insert(fillable)
+        const fillable = [... (new this().getFillable()), 'uid', 'uuid'];
+
+        const getFillable = Array.isArray(data) ? data.map(item => filterObject(item, fillable)) : filterObject(data, fillable);
+
+        return (await this.query().insert(getFillable))
     }
 }

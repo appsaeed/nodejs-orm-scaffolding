@@ -1,5 +1,6 @@
 const path = require('path')
 const { writeFileSync } = require('fs')
+const color = require('colorette');
 // process.env = {};
 require('dotenv').config();
 try {
@@ -11,7 +12,11 @@ try {
 
   writeFileSync(filepath, data)
   
-  console.log('Env types generated!')
+  console.log(
+    color.green('Environments types are generated!'),
+    '\n',
+    color.green('Types File: ' + filepath.replace(process.cwd(), ''))
+  )
 } catch (error) {
   throw error;
 }

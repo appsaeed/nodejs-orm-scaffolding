@@ -1,12 +1,13 @@
 import connectFlash from 'connect-flash';
 import express from 'express';
-import { base } from './app/base/helpers';
+import { env } from './app/base/helpers';
 import middlewiare from './app/middleware/middleware';
 import apiRouter from './app/routes/api';
 import authRouter from './app/routes/auth';
 import publicRouter from './app/routes/public';
 import config from './config/config';
 import filesconfig from './config/filesconfig';
+import { User } from './models/User';
 const app = express();
 //app setup
 app.use(express.json());
@@ -25,7 +26,15 @@ app.use(authRouter)
 app.use('/api/v1', apiRouter)
 app.use(publicRouter)
 
-console.log(base('hello/world'));
+// main();
+console.log('database: ', env('DB_DATABASE'))
+async function main() {
+    const insert = await User.insert({
+        first_name: 'Saeed',
+        email: Date.now() + '@gmail.com',
+    })
+    console.log(insert)
+}
 
 //middleware
 app.use(middlewiare)

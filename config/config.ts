@@ -1,16 +1,10 @@
 import { env } from "../app/base/helpers";
-import cors from "./cors";
-import database from "./database";
-import mail from "./mail";
 import session from "./session";
 
 
 export default {
 
   //applications rest configuration
-  database,
-  mail,
-  cors,
   session,
 
   /**

@@ -1,9 +1,11 @@
-import path from "path";
+import * as dotenv from 'dotenv';
 import statusCode from "./statusCode";
 import { Env } from './types/env';
 import { Res, StatusCodes, StatusNamesCodes } from "./types/types";
-export const base = (paths: string = '') => path.resolve(process.cwd(), paths);
-
+dotenv.config({
+    debug: false,
+    path: __dirname.replace('app/base', '') + '.env'
+});
 /**
  * Get env variables by node process.env 
  * @param {Env} name environment variable name

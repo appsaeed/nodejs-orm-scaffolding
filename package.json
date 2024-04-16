@@ -9,8 +9,21 @@
   "scripts": {
     "start": "node dist/main.js",
     "build": "tsc",
-    "env" : "node ./app/base/cli.js",
-    "dev": "node ./app/base/cli.js && tsx watch main.ts"
+    "env": "node ./app/base/env.cli.js",
+    "dev": "node ./app/base/env.cli.js && tsx watch main.ts",
+    "help": "tsx ./app/base/db.cli.js --help",
+    "migrate:make": "tsx ./app/base/db.cli.js migrate:make",
+    "migrate:up": "tsx ./app/base/db.cli.js migrate:up",
+    "migrate:latest": "tsx ./app/base/db.cli.js migrate:latest",
+    "migrate:rollback": "tsx ./app/base/db.cli.js migrate:rollback",
+    "migrate:down": "tsx ./app/base/db.cli.js migrate:down",
+    "migrate:list": "tsx ./app/base/db.cli.js migrate:list",
+    "migrate:status": "tsx ./app/base/db.cli.js migrate:status",
+    "migrate:version": "tsx ./app/base/db.cli.js migrate:version",
+    "migrate:unlock": "tsx ./app/base/db.cli.js migrate:unlock",
+    "seed:make": "tsx ./app/base/db.cli.js seed:make",
+    "seed:run": "tsx ./app/base/db.cli.js seed:run",
+    "migrate:versions": "tsx ./app/base/db.cli.js migrate:version"
   },
   "keywords": [],
   "author": "",
@@ -21,14 +34,18 @@
     "@types/express": "^4.17.21",
     "@types/express-session": "^1.18.0",
     "@types/node": "^20.12.7",
+    "colorette": "^2.0.20",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "express-session": "^1.18.0",
     "knex": "^3.1.0",
-    "tsx": "^4.7.2"
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.5"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.9.4"
   }
 }
