@@ -4,7 +4,7 @@ import session from "./session";
 
 export default {
 
-  //applications rest configuration
+  //applications rest session configuration
   session,
 
   /**

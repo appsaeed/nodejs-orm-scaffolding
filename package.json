@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-like-laravel",
+  "name": "nodejs-orm-scaffolding",
   "version": "1.0.0",
   "description": "",
   "main": "main.ts",
