@@ -10,6 +10,6 @@
     "rootDir": ".",
     "declaration": true
   },
-  // "include": ["./*.ts", "./**/*.ts", "app/base/*.js"],
+  "include": ["./*.ts", "./**/*.ts", "app/base/*.js" , "./global.d.ts"],
   "exclude": ["node_modules"]
 }

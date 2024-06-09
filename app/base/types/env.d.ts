@@ -35,6 +35,7 @@ export type Env<T> = 'LESS_TERMCAP_se'|
 'npm_config_prefix'|
 'npm_config_npm_version'|
 'XDG_SESSION_CLASS'|
+'npm_config_registry'|
 'USERNAME'|
 'TERM'|
 'npm_config_cache'|

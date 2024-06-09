@@ -1,6 +1,6 @@
 import connectFlash from 'connect-flash';
 import express from 'express';
-import { env } from './app/base/helpers';
+import * as Helpers from "./app/base/helpers";
 import middlewiare from './app/middleware/middleware';
 import apiRouter from './app/routes/api';
 import authRouter from './app/routes/auth';
@@ -8,6 +8,10 @@ import publicRouter from './app/routes/public';
 import config from './config/config';
 import filesconfig from './config/filesconfig';
 import { User } from './models/User';
+
+// Assigning helpers to the global object
+Object.assign(global, Helpers);
+
 const app = express();
 //app setup
 app.use(express.json());
@@ -41,5 +45,5 @@ app.use(middlewiare)
 
 app.listen(3030, () => {
     // console.clear()
-    console.log('http://localhost:3030')
+    console.log('Server url: ', 'http://localhost:3030')
 })

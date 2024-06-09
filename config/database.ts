@@ -8,6 +8,7 @@ const database: Knex.Config = {
      * --------------------------------------------------------------------------
      */
     client: env('DB_CONNECTION', 'mysql'),
+
     connection: {
         // connectionString: env('DATABASE_URL'),
         database: env('DB_DATABASE', 'nodejs_test'),

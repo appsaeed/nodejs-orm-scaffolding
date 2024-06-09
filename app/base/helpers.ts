@@ -11,8 +11,8 @@ dotenv.config({
  * @param {Env} name environment variable name
  * @param defaultValue environment variable value default value
  */
-export function env<T, K>(name: Env<T>, defaultValue?: K) {
-    return process.env[String(name)] || defaultValue;
+export function env<E, D>(name: Env<E>, defaultValue?: D) {
+    return process.env[String(name)] as E || defaultValue as D;
 }
 /**
  * create api response with append data and status code
